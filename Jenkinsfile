@@ -1,6 +1,6 @@
 pipeline {
 agent any
-
+    
 tools {
     maven 'Maven3'
     jdk 'JDK17'
@@ -63,11 +63,12 @@ stages {
 
     stage('Docker Login') {
         steps {
+
             withCredentials([
                 usernamePassword(
                     credentialsId: 'dockerhub-creds',
-                    usernameVariable: 'ershrikant002',
-                    passwordVariable: '3DOT3equal3'
+                    usernameVariable: 'DOCKER_USER',
+                    passwordVariable: 'DOCKER_PASS'
                 )
             ]) {
 
@@ -77,15 +78,16 @@ stages {
             }
         }
     }
+}
 
-    post {
-        success {
-            echo 'Pipeline executed successfully.'
-        }
+post {
 
-        failure {
-            echo 'Pipeline failed.'
-        }
+    success {
+        echo 'Pipeline executed successfully.'
+    }
+
+    failure {
+        echo 'Pipeline failed.'
     }
 }
 
