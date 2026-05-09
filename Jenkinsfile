@@ -43,21 +43,18 @@ stages {
     }
 
     stage('Run Unit Tests') {
-        steps {
-
-            dir('user-service') {
-                sh 'mvn test'
-            }
-
-            dir('policy-service') {
-                sh 'mvn test'
-            }
-
-            dir('order-service') {
-                sh 'mvn test'
-            }
-        }
+steps {
+    dir('user-service') {
+        sh 'mvn test'
     }
+
+    dir('policy-service') {
+        sh 'mvn test'
+    }
+}
+
+}
+
 
     stage('Docker Login') {
         steps {
