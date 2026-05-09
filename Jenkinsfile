@@ -1,6 +1,23 @@
+```groovy
 pipeline {
+    agent any
+
+    tools {
+        maven 'Maven3'
+        jdk 'JDK17'
+    }
+
+    environment {
+        DOCKER_HUB = 'your-dockerhub-username'
+        IMAGE_NAME = 'insurance-microservices'
+    }
+
+    stages {
+
+        stage('Checkout Code') {
             steps {
-                git branch: 'main', url: 'https://github.com/ershrikant002/insurance-microservices.git'
+                git branch: 'main',
+                url: 'https://github.com/ershrikant002/insurance-microservices.git'
             }
         }
 
@@ -27,11 +44,13 @@ pipeline {
                 withCredentials([
                     usernamePassword(
                         credentialsId: 'dockerhub-creds',
-                        usernameVariable: 'DOCKER_USER',
-                        passwordVariable: 'DOCKER_PASS'
+                        usernameVariable: 'ershrikant002',
+                        passwordVariable: '3DOT3equal3'
                     )
                 ]) {
-                    sh 'echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin'
+                    sh '''
+                    echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
+                    '''
                 }
             }
         }
@@ -67,3 +86,4 @@ pipeline {
         }
     }
 }
+```
