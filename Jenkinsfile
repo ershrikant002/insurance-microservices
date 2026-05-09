@@ -73,26 +73,29 @@ steps {
             }
         }
     }
-     stage('Deploy to Nexus') {
+    stage('Deploy to Nexus') {
 steps {
+    dir('user-service') {
 
-    withCredentials([
-        usernamePassword(
-            credentialsId: 'nexus-creds',
-            usernameVariable: 'NEXUS_USER',
-            passwordVariable: 'NEXUS_PASS'
-        )
-    ]) {
+        withCredentials([
+            usernamePassword(
+                credentialsId: 'nexus-creds',
+                usernameVariable: 'NEXUS_USER',
+                passwordVariable: 'NEXUS_PASS'
+            )
+        ]) {
 
-        sh """
-        mvn deploy \
-        -Dnexus.username=${NEXUS_USER} \
-        -Dnexus.password=${NEXUS_PASS}
-        """
+            sh """
+            mvn deploy \
+            -Dnexus.username=${NEXUS_USER} \
+            -Dnexus.password=${NEXUS_PASS}
+            """
+        }
     }
 }
 
 }
+
 }
    
 
