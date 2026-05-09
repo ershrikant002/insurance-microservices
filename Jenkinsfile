@@ -73,8 +73,7 @@ steps {
             }
         }
     }
-}
-    stage('Deploy to Nexus') {
+     stage('Deploy to Nexus') {
 steps {
 
     withCredentials([
@@ -94,6 +93,8 @@ steps {
 }
 
 }
+}
+   
 
 post {
 
