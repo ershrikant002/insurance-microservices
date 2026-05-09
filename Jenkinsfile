@@ -20,11 +20,7 @@ pipeline {
             }
         }
 
-        stage('Build Project') {
-            steps {
-                sh 'mvn clean install -DskipTests'
-            }
-        }
+      stage('Build Services') { steps { dir('user-service') { sh 'mvn clean install -DskipTests' } dir('policy-service') { sh 'mvn clean install -DskipTests' } dir('order-service') { sh 'mvn clean install -DskipTests' } } }
 
         stage('Run Unit Tests') {
             steps {
