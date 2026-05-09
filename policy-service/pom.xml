@@ -106,7 +106,7 @@
 	<distributionManagement>
     <repository>
         <id>nexus-releases</id>
-        <url>http://YOUR_NEXUS_HOST:8081/repository/maven-releases/</url>
+        <url>http://localhost:8081/repository/maven-releases/</url>
     </repository>
 
     <snapshotRepository>
