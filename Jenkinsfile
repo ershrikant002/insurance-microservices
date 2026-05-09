@@ -38,9 +38,7 @@ stages {
                 sh 'mvn clean install -DskipTests'
             }
 
-            dir('order-service') {
-                sh 'mvn clean install -DskipTests'
-            }
+           
         }
     }
 
