@@ -104,6 +104,17 @@ steps {
 }
 
 }
+    stage('Deploy WAR to Tomcat') {
+    steps {
+
+        dir('user-service') {
+
+            sh '''
+            docker cp target/insurance-0.0.1-SNAPSHOT.war tomcat-server:/usr/local/tomcat/webapps/insurance.war
+            '''
+        }
+    }
+}
 
 }
    
