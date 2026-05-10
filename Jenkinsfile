@@ -85,9 +85,11 @@ steps {
             )
         ]) {
 
-            sh """
-            mvn clean install deploy -U -DskipTests 
-            """
+           
+            sh '''
+            mvn clean deploy -DskipTests \
+            -DaltDeploymentRepository=nexus-snapshots::default::http://192.168.1.4:8081/repository/maven-snapshots/
+            '''
         }
     }
 }
