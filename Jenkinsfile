@@ -73,6 +73,17 @@ steps {
             }
         }
     }
+     stage('Verify POM') {
+        steps {
+
+            dir('user-service') {
+
+                sh 'pwd'
+                sh 'ls'
+                sh 'cat pom.xml | grep distributionManagement -A 10'
+            }
+        }
+    }
     stage('Deploy to Nexus') {
 steps {
     dir('user-service') {
@@ -85,9 +96,7 @@ steps {
             )
         ]) {
             sh """
-            mvn clean deploy \
-            -DskipTests \
-          
+            mvn clean deploy -DskipTests 
             """
         }
     }
