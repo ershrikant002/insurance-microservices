@@ -80,7 +80,7 @@ steps {
 
                 sh 'pwd'
                 sh 'ls'
-                sh 'cat pom.xml
+                sh 'cat pom.xml'
             }
         }
     }
