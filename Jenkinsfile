@@ -80,7 +80,7 @@ steps {
 
                 sh 'pwd'
                 sh 'ls'
-                sh 'cat pom.xml | grep distributionManagement -A 10'
+                sh 'cat pom.xml
             }
         }
     }
