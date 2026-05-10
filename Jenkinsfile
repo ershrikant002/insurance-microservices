@@ -86,8 +86,8 @@ steps {
         ]) {
 
             sh """
-            cd user-service
-            mvn clean install deploy -DskipTests \
+            
+            mvn clean install deploy -U -DskipTests \
             -Dnexus.username=${NEXUS_USER} \
             -Dnexus.password=${NEXUS_PASS}
             """
