@@ -96,7 +96,7 @@ steps {
             )
         ]) {
             sh """
-            mvn clean deploy -DskipTests 
+            mvn clean deploy -DskipTests \
             -DaltDeploymentRepository=nexus-snapshots::http://192.168.1.4:8081/repository/maven-snapshots/
             """
         }
